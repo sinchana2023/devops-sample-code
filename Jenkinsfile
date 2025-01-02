@@ -5,12 +5,13 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Creating virtual environment and installing dependencies...'
+                sh 'pip3 install -r requirements.txt'  // Install dependencies from requirements.txt
             }
         }
         stage('Code Quality') {
             steps {
                 echo 'Running code quality checks...'
-                sh 'flake8 .' // You can replace this with 'pylint .' if you prefer pylint
+                sh 'flake8 .'  // Runs flake8 to check code quality
             }
         }
         stage('Test') {
